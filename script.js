@@ -9,10 +9,22 @@ document.getElementById("generate").onclick = generatePassword
 function generatePassword(){
 
   //Prompt 1 selects password length
+
 var selectLength = prompt("Select a password length between 8 and 128");
-console.log(selectLength);
 var selectLengthInt = parseInt(selectLength);
+
 console.log(selectLength);
+
+
+
+if (selectLengthInt < 8 || selectLengthInt > 128) {
+  alert("Password is not correct length.  Please select a length between 8 and 128")
+  return;
+} 
+else if(!isNumber(selectLengthInt)){
+  alert("You must only enter numbers");
+    return;
+};
 
 
   //Confirm 2 adds lowercase letters if boolean is true
@@ -83,4 +95,8 @@ for (i = 0; i < (selectLengthInt); i++) {
   parElement.appendChild(textToAdd);
 
 }
+}
+
+function isNumber(n) {
+  return !isNaN(parseFloat(n)) && !isNaN(n - 0);
 }
